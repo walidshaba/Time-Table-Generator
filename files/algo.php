@@ -3,7 +3,7 @@
 /**Class to store subject details**/
 class Subject
 {
-    public $code; //Subject code
+    public  $code; //Subject code
     public $classes = 0; //No. of classes
     public $semester; //semester of subject
     public $alias; //alias for subject teacher
@@ -36,14 +36,16 @@ while ($row = mysqli_fetch_assoc($query)) {
     if ($row['course_type'] == 'LAB')
         continue;
     $temp = new Subject();
-    $temp->code = $row['subject_code'];
+    $temp->code = $row['subject_name'];
     $temp->semester = $row['semester'];
     $temp->subjectteacher = $row['allotedto'];
     if (isset($temp->subjectteacher)) {
-        $teacheralias_query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
-            "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher'");
+        $teacheralias_query = mysqli_query(
+            mysqli_connect("localhost", "root", "", "ttms"),
+            "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher'"
+        );
         $row = mysqli_fetch_assoc($teacheralias_query);
-        $temp->alias = $row['alias'];
+        $temp->alias = $row['name'];
     }
     $subjects[$count++] = $temp;
 }
@@ -61,13 +63,15 @@ while ($row = mysqli_fetch_assoc($query)) {
 $teachers_count = $count;
 $r = -1;
 
-/** Genrating timetable for theory courses, with maximum class for each subject equal to 4 */
+/** Genrating timetable for theory courses, with maximum xclass for each subject equal to 4 */
 for ($I = 0; $I < $subjects_count * 4; $I++) {
     $i = $I % $subjects_count;
     $sem = $subjects[$i]->semester;
     $year = ($sem + 1) / 2;
-    $classroom_query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
-        "SELECT name FROM classrooms WHERE status='$year'");
+    $classroom_query = mysqli_query(
+        mysqli_connect("localhost", "root", "", "ttms"),
+        "SELECT name FROM classrooms WHERE status='$year'"
+    );
     $row = mysqli_fetch_assoc($classroom_query);
     $classroom = $row['name'];
     for ($j = 0; $j < 30; $j++) {
@@ -122,7 +126,6 @@ for ($i = 3; $i < 9; $i += 2) {
                 $subjectslots[$i][$k][$j % 5] = "-";
                 $aliasslots[$i][$k][$j % 5][0] = "-";
             }
-
         }
     }
 }
@@ -147,23 +150,29 @@ while ($row = mysqli_fetch_assoc($query)) {
     if (!($row['course_type'] == 'LAB'))
         continue;
     $temp = new Subject();
-    $temp->code = $row['subject_code'];
+    $temp->code = $row['subject_name    '];
     $temp->semester = $row['semester'];
     $temp->subjectteacher = $row['allotedto'];
     $temp->subjectteacher2 = $row['allotedto2'];
     $temp->subjectteacher3 = $row['allotedto3'];
-    $teacheralias_query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
-        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher'");
+    $teacheralias_query = mysqli_query(
+        mysqli_connect("localhost", "root", "", "ttms"),
+        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher'"
+    );
     $row = mysqli_fetch_assoc($teacheralias_query);
-    $temp->alias = $row['alias'];
-    $teacheralias_query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
-        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher2'");
+    $temp->alias = $row['name'];
+    $teacheralias_query = mysqli_query(
+        mysqli_connect("localhost", "root", "", "ttms"),
+        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher2'"
+    );
     $row = mysqli_fetch_assoc($teacheralias_query);
-    $temp->alias2 = $row['alias'];
-    $teacheralias_query = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"),
-        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher3'");
+    $temp->alias2 = $row['name'];
+    $teacheralias_query = mysqli_query(
+        mysqli_connect("localhost", "root", "", "ttms"),
+        "SELECT * FROM teachers WHERE faculty_number='$temp->subjectteacher3'"
+    );
     $row = mysqli_fetch_assoc($teacheralias_query);
-    $temp->alias3 = $row['alias'];
+    $temp->alias3 = $row['name'];
     $practicals[$count++] = $temp;
 }
 for ($I = 0; $I < 2 * $count; $I++) {
@@ -194,7 +203,8 @@ for ($I = 0; $I < 2 * $count; $I++) {
     for ($j = 0; $j < 6; $j++) {
         if (isset($subjectslots[$sem][$j][5])) {
             continue;
-        } else if (isset($teachers[$tindex]->days[$sem % 2][$j][5]) || isset($teachers[$tindex2]->days[$sem % 2][$j][5]) ||
+        } else if (
+            isset($teachers[$tindex]->days[$sem % 2][$j][5]) || isset($teachers[$tindex2]->days[$sem % 2][$j][5]) ||
             isset($teachers[$tindex3]->days[$sem % 2][$j][5])
         ) {
             continue;
@@ -216,8 +226,8 @@ for ($I = 0; $I < 2 * $count; $I++) {
 /**checks for empty slot**/
 for ($i = 3; $i < 9; $i += 2) {
     for ($j = 0; $j < 6; $j++) {
-        if (isset($subjectslots[$i][$j][5])) {}
-        else {
+        if (isset($subjectslots[$i][$j][5])) {
+        } else {
             $subjectslots[$i][$j][5] = '-';
             $aliasslots[$i][$j][5][0] = '-';
             $aliasslots[$i][$j][5][1] = '-';
@@ -229,8 +239,8 @@ for ($i = 3; $i < 9; $i += 2) {
 for ($i = 0; $i < $teachers_count; $i++) {
     for ($k = 0; $k < 6; $k++) {
 
-        if (isset($teachers[$i]->days[1][$k][5])) {}
-        else {
+        if (isset($teachers[$i]->days[1][$k][5])) {
+        } else {
             $teachers[$i]->days[1][$k][5] = "-";
         }
     }
@@ -251,7 +261,6 @@ period6='" . $subjectslots[$i][$j][5] . "<br>" . $aliasslots[$i][$j][5][0] . ", 
  WHERE day='" . $days[$j] . "' ";
         $q = mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $query);
     }
-
 }
 /******Saving teachers timetable into database*****/
 for ($i = 0; $i < $teachers_count; $i++) {
@@ -270,5 +279,3 @@ period6='" . $teachers[$i]->days[1][$j][5] . "'
 
 /******redirect back to generate timetable **/
 header("Location:generatetimetable.php?success=true");
-
-?>

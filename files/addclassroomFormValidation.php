@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: MSaqib
@@ -26,4 +27,3 @@ if ($q) {
     // header("Location:index.html");
 
 }
-?>

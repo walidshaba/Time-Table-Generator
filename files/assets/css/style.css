@@ -1,10 +1,35 @@
-﻿/* =============================================================
+﻿/*=============================================================
+    Authour URI: www.binarytheme.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+   
+    ========================================================  */
+
+/* =============================================================
    GENERAL STYLES
  ============================================================ */
 body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%; */
+
   font-family: 'Open Sans', sans-serif;
   line-height: 30px;
   font-size: 14px;
+  /* background-image: url('../img/Nilebackground-img.jpg'); */
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  /* background-color: rgba(0, 0, 0, 0.7); */
+}
+
+body .logins {
+  /* display: flex; */
 }
 
 .set-pad {
@@ -31,20 +56,6 @@ body {
   font-weight: 900;
   letter-spacing: 1px;
   min-height: 70px;
-  box-shadow: 0 4px 8px 0 #1c4da125;
-}
-#menu > * {
-  /* color: #1c4da1; */
-}
-#menu div {
-  display: flex;
-  flex-direction: row;
-  justify-content: center;
-  align-items: center;
-}
-
-#menu div img {
-  margin-right: 20px;
 }
 
 .navbar-inverse {
@@ -377,22 +388,9 @@ h1::after {
 /*=====================================
   Footer STYLES 
   ===================================*/
-
-.social-icons {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background-color: #1a94c4;
-  height: 60px;
-}
-.social-icons > div {
-  width: 150px;
-  display: flex;
-  justify-content: space-between;
-}
 #footer {
   padding: 5px 20px;
-  background-color: #68bf50;
+  background-color: #1c4da1;
   text-align: right;
   color: #fff;
   font-size: 15px;

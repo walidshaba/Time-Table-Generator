@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Generate PDF from PHP</title>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"
+      defer
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.3.2/purify.min.js"
+      defer
+    ></script>
+  </head>
+  <body>
+    <div id="pdfContent"></div>
+    <button onclick="generatePDF()">Generate PDF</button>
+    <script>
+      function generatePDF() {
+        var xhr = new XMLHttpRequest();
+        xhr.onreadystatechange = function () {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            let htmlContent = xhr.responseText;
+            createPDF(htmlContent);
+          }
+        };
+        xhr.open('GET', 'generate_html.php', true);
+        xhr.send();
+      }
+
+      function createPDF(htmlContent) {
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        doc.fromHTML(htmlContent, {
+          callback: function (doc) {
+            doc.save('generated_pdf.pdf');
+            alert('PDF downloaded!');
+          },
+        });
+      }
+    </script>
+  </body>
+</html>

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: MSaqib
@@ -7,4 +8,3 @@
  */
 
 $con = mysqli_connect("localhost", "root", "", "ttms");
-?>

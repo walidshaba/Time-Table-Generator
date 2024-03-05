@@ -12,7 +12,7 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>TimeTable Management System</title>
+    <title>Timetable Generator</title>
     <!-- BOOTSTRAP CORE STYLE CSS -->
     <link href="assets/css/bootstrap.css" rel="stylesheet" />
     <!-- FONT AWESOME CSS -->
@@ -27,11 +27,10 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
 </head>
 
 <body>
-    <div class="navbar navbar-inverse navbar-fixed-top" id="menu">
+    <div class="navbar navbar-inverse navbar-fixed-top " id="menu">
         <div class="container">
             <div align="center">
-                <img src="assets/img/Social/nile-logo.svg" alt="" width="150px">
-                <h3 align="center" style="text-transform: uppercase;">Time Table Generator</h3>
+                <h3 align="center">TIME TABLE GENERATOR</h3>
             </div>
         </div>
     </div>
@@ -46,7 +45,7 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
         </ol> -->
 
     <!-- Wrapper for slides -->
-    <!-- <div class="carousel-inner" role="listbox">
+    <!-- <div class="carousel-inner" role="listbox">    
             <div class="item active">
                 <img src="assets/img/lab1.jpg" alt="Chania">
             </div>
@@ -62,8 +61,8 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
             <div class="item">
                 <img src="assets/img/lab2.jpg" alt="Flower">
             </div>
-        </div>
-    </div> -->
+        </div> -->
+    <!-- </div> -->
     <script type="text/javascript">
         function genpdf() {
             var doc = new jsPDF();
@@ -74,10 +73,10 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
             window.alert("Downloaded!");
         }
     </script>
-    <div align="center" STYLE="margin-top: 30px; margin-top:100px; ">
-        <button data-scroll-reveal="enter from the bottom after 0.2s" id="teacherLoginBtn" class="btn btn-info btn-lg">TEACHER LOGIN
+    <div class="logins" align="center" style="margin-top: 300px;">
+        <button data-scroll-reveal="enter from the bottom after 0.2s" id="teacherLoginBtn" class="btn btn-info btn-lg" style="margin-bottom: 20px;">LECTURER LOGIN
         </button>
-        <button data-scroll-reveal="enter from the bottom after 0.2s" id="adminLoginBtn" class="btn btn-success btn-lg">ADMIN LOGIN
+        <button data-scroll-reveal="enter from the bottom after 0.2s" id="adminLoginBtn" class="btn btn-success btn-lg" style="margin-bottom: 20px">ADMIN LOGIN
         </button>
     </div>
     <br>
@@ -85,14 +84,14 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
         <form data-scroll-reveal="enter from the bottom after 0.2s" action="studentvalidation.php" method="post">
             <select id="select_semester" name="select_semester" class="list-group-item">
                 <option selected disabled>Select Semester</option>
-                <option value="3"> B.Tech II Year ( Semester III )</option>
-                <option value="4"> B.Tech II Year ( Semester IV )</option>
-                <option value="5"> B.Tech III Year ( Semester V )</option>
-                <option value="6"> B.Tech III Year ( Semester VI )</option>
-                <option value="7"> B.Tech IV Year ( Semester VII )</option>
-                <option value="8"> B.Tech IV Year ( Semester VIII )</option>
+                <option value="3"> C.Science II Year ( Semester 3 )</option>
+                <option value="4"> C.Science Year ( Semester 4 )</option>
+                <option value="5"> C.Science III Year ( Semester 5 )</option>
+                <option value="6"> C.Science III Year ( Semester 6 )</option>
+                <option value="7"> C.Science IV Year ( Semester 7 )</option>
+                <option value="8"> C.Science IV Year ( Semester 8 )</option>
             </select>
-            <button type="submit" class="btn btn-info btn-lg" style="margin-top: 10px">Download</button>
+            <button type="submit" class="btn btn-info btn-lg" style="margin-top: 10px">View Timetable</button>
         </form>
     </div>
     <!-- The Modal -->
@@ -200,73 +199,73 @@ if (isset($_GET['generated']) && $_GET['generated'] == "false") {
     <!-- <div class="row">
 
 
-        <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.4s">
-            <div class="faculty-div">
-                <img src="assets/img/faculty/donk.jpeg" class="img-rounded" />
-                <h3 align="center">Prof. Donk</h3>
-                <hr />
-                <h4 align="center">Dean<br />F/o Engineering & Technology</h4>
+                <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.4s">
+                    <div class="faculty-div">
+                        <img src="assets/img/faculty/donk.jpeg" class="img-rounded" />
+                        <h3 align="center">Prof. Donk</h3>
+                        <hr />
+                        <h4 align="center">Dean<br />F/o Engineering & Technology</h4>
+
+                    </div>
+                </div>
+                <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.5s">
+                    <div class="faculty-div">
+                        <img src="assets/img/faculty/princi.jpeg" class="img-rounded" />
+                        <h3 align="center">PROF. Devil</h3>
+                        <hr />
+                        <h4 align="center">Principal<br /> ZHCET</h4>
+
+                    </div>
+                </div>
+                <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.6s">
+                    <div class="faculty-div">
+                        <img src="assets/img/faculty/cat.jpeg" class="img-rounded" />
+                        <h3 align="center">PROF. Meow</h3>
+                        <hr />
+                        <h4 align="center">Chairman<br />Computer Engineering Department</h4>
+
+                    </div>
+                </div>
 
             </div>
         </div>
-        <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.5s">
-            <div class="faculty-div">
-                <img src="assets/img/faculty/princi.jpeg" class="img-rounded" />
-                <h3 align="center">PROF. Devil</h3>
-                <hr />
-                <h4 align="center">Principal<br /> ZHCET</h4>
-
-            </div>
-        </div>
-        <div class="col-lg-4  col-md-4 col-sm-4" data-scroll-reveal="enter from the bottom after 0.6s">
-            <div class="faculty-div">
-                <img src="assets/img/faculty/cat.jpeg" class="img-rounded" />
-                <h3 align="center">PROF. Meow</h3>
-                <hr />
-                <h4 align="center">Chairman<br />Computer Engineering Department</h4>
-
-            </div>
-        </div>
-
-    </div>
-    </div>
     </div> -->
 
-    <div class="">
-        <div class="">
-            <!-- <div class="col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1 " data-scroll-reveal="enter from the bottom after 0.4s">
+    <div class="container" style="position: absolute; bottom: 40px; width:100%; text-align:center; background-color:#69BF51; height: 60px; display:flex; justify-content:center;">
+        <!-- <div class="row set-row-pad"> -->
+        <!-- <div class="col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1 " data-scroll-reveal="enter from the bottom after 0.4s"> -->
 
-                <h2><strong>Our Location </strong></h2>
-                <hr />
-                <div>
-                    <h4>Find Us Anywhere,
-                    </h4>
-                    <h4> Said Anywhere</h4>
-                    <h4><strong>Call:</strong> 9837773333 </h4>
-                    <h4><strong>Email: </strong>meow@meow.com</h4>
-                </div>
+        <!-- <h2><strong>Our Location </strong></h2> -->
+        <!-- <hr /> -->
+        <!-- <div>
+            <h4>Find Us Anywhere,
+            </h4>
+            <h4> Said Anywhere</h4>
+            <h4><strong>Call:</strong> 9837773333 </h4>
+            <h4><strong>Email: </strong>meow@meow.com</h4>
+        </div>
+ -->
 
+        <!-- </div> -->
+        <!-- <div class="col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1" data-scroll-reveal="enter from the bottom after 0.4s"> -->
 
-            </div> col-lg-4 col-md-4 col-sm-4   col-lg-offset-1 col-md-offset-1 col-sm-offset-1-->
-            <div class="social-icons" data-scroll-reveal="enter from the bottom after 0.4s" style="text-align: center; position:absolute; width: 100%; bottom: 40px;">
+        <!-- <h2><strong>Social Conectivity </strong></h2> -->
 
-                <!-- <h2><strong>Social Conectivity </strong></h2>
-                <hr /> -->
-                <div>
-                    <a href="https://www.facebook.com"> <img src="assets/img/Social/square-facebook.svg" width="20px" alt="" /> </a>
-                    <a href="https://www.instagram.com/nileuni/"> <img src="assets/img/Social/instagram.svg" width="20px" alt="" /></a>
-                    <a href=""> <img src="assets/img/Social/x-twitter.svg" width="20px" alt="" /></a>
-                </div>
-            </div>
-
-
+        <div class="social" style="height:100%; display:flex; justify-content:space-between; width:100px; align-items:center;">
+            <a href="https://www.facebook.com"> <img src="assets/img/Social/square-facebook.svg" alt="" /> </a>
+            <a href="https://www.instagram.com/nileuni/" target="_blank"> <img src="assets/img/Social/instagram.svg" alt="" /></a>
+            <a href="https://twitter.com/NileUni" target="_blank"> <img src="assets/img/Social/x-twitter.svg" alt="" /></a>
         </div>
     </div>
-    <div id="footer" style="text-align: center; position:absolute; width: 100%; bottom: 0;">
-        &copy 2024 Nile university Student project | All Rights Reserved | <a href="#" style="color: #fff" target="_blank">Design by : Nile Student</a>
 
+
+    <!-- </div> -->
     </div>
     <!-- CONTACT SECTION END-->
+    <div id="footer" style="position: absolute; bottom: 0; width:100%; text-align:center;">
+        &copy 2024| All Rights Reserved | <a href="#" style="color: #fff" target="_blank">Design by : ?</a>
+
+    </div>
     <!-- FOOTER SECTION END-->
 
     <!--  Jquery Core Script -->
