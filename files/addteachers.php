@@ -64,55 +64,55 @@
     <br>
 
     <div align="center" style="margin-top:80px">
-        <form name="import" method="post" enctype="multipart/form-data">
+        <!-- <form name="import" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <input type="submit" name="teacherexcel" id="teacherexcel" class="btn btn-info btn-lg" value="IMPORT EXCEL" />
-        </form>
+        </form> -->
         <?php
-        if (isset($_POST['teacherexcel'])) {
-            if (empty($_FILES['file']['tmp_name'])) {
-                echo '<script>alert("Select a file first! ");</script>';
-            } else {
-                $file = $_FILES['file']['tmp_name'];
-                $handle = fopen($file, 'r');
-                $headings = true;
-                while (!feof($handle)) {
-                    $filesop = fgetcsv($handle, 1000);
+        // if (isset($_POST['teacherexcel'])) {
+        //     if (empty($_FILES['file']['tmp_name'])) {
+        //         echo '<script>alert("Select a file first! ");</script>';
+        //     } else {
+        //         $file = $_FILES['file']['tmp_name'];
+        //         $handle = fopen($file, 'r');
+        //         $headings = true;
+        //         while (!feof($handle)) {
+        //             $filesop = fgetcsv($handle, 1000);
 
-                    $facno = $filesop[0];
-                    $name = $filesop[1];
-                    $alias = $filesop[2];
-                    $designation = $filesop[3];
-                    $contact = $filesop[4];
-                    $email = $filesop[5];
-                    if ($facno == "" || $facno == "Faculty No.") {
-                        continue;
-                    }
-                    $q = mysqli_query(
-                        mysqli_connect("localhost", "root", "", "ttms"),
-                        "INSERT INTO teachers VALUES ('$facno','$name','$alias','$designation','$contact','$email')"
-                    );
-                    if ($q) {
-                        $sql = "CREATE TABLE " . $facno . " (
-                day VARCHAR(10) PRIMARY KEY, 
-                period1 VARCHAR(30),
-                period2 VARCHAR(30),
-                period3 VARCHAR(30),
-                period4 VARCHAR(30),
-                period5 VARCHAR(30),
-                period6 VARCHAR(30)
-                )";
-                        mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
-                        $days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
-                        for ($i = 0; $i < 6; $i++) {
-                            $day = $days[$i];
-                            $sql = "INSERT into " . $facno . " VALUES('$day','','','','','','')";
-                            mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
-                        }
-                    }
-                }
-            }
-        }
+        //             $facno = $filesop[0];
+        //             $name = $filesop[1];
+        //             $alias = $filesop[2];
+        //             $designation = $filesop[3];
+        //             $contact = $filesop[4];
+        //             $email = $filesop[5];
+        //             if ($facno == "" || $facno == "Faculty No.") {
+        //                 continue;
+        //             }
+        //             $q = mysqli_query(
+        //                 mysqli_connect("localhost", "root", "", "ttms"),
+        //                 "INSERT INTO teachers VALUES ('$facno','$name','$alias','$designation','$contact','$email')"
+        //             );
+        //             if ($q) {
+        //                 $sql = "CREATE TABLE " . $facno . " (
+        //         day VARCHAR(10) PRIMARY KEY, 
+        //         period1 VARCHAR(30),
+        //         period2 VARCHAR(30),
+        //         period3 VARCHAR(30),
+        //         period4 VARCHAR(30),
+        //         period5 VARCHAR(30),
+        //         period6 VARCHAR(30)
+        //         )";
+        //                 mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
+        //                 $days = array('monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday');
+        //                 for ($i = 0; $i < 6; $i++) {
+        //                     $day = $days[$i];
+        //                     $sql = "INSERT into " . $facno . " VALUES('$day','','','','','','')";
+        //                     mysqli_query(mysqli_connect("localhost", "root", "", "ttms"), $sql);
+        //                 }
+        //             }
+        //         }
+        //     }
+        // }
         ?>
     </div>
     <div align="center" style="margin-top:20px">

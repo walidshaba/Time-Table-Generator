@@ -138,7 +138,7 @@
         function deleteHandlers() {
             var table = document.getElementById("classroomstable");
             var rows = table.getElementsByTagName("tr");
-            for (i = 0; i < script rows.length; i++) {
+            for (i = 0; i < rows.length; i++) {
                 var currentRow = table.rows[i];
                 //var b = currentRow.getElementsByTagName("td")[0];
                 var createDeleteHandler =

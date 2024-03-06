@@ -64,34 +64,34 @@
     <br>
 
     <div align="center" style="margin-top:60px">
-        <form name="import" method="post" enctype="multipart/form-data">
+        <!-- <form name="import" method="post" enctype="multipart/form-data">
             <input type="file" name="file" />
             <input type="submit" name="subjectexcel" id="subjectexcel" class="btn btn-info btn-lg" value="IMPORT EXCEL" />
-        </form>
+        </form> -->
         <?php
-        if (isset($_POST['subjectexcel'])) {
-            if (empty($_FILES['file']['tmp_name'])) {
-                echo '<script>alert("Select a file first! ");</script>';
-            } else {
-                $file = $_FILES['file']['tmp_name'];
-                $handle = fopen($file, 'r');
-                while (!feof($handle)) {
-                    $filesop = fgetcsv($handle, 1000);
-                    $code = $filesop[0];
-                    $name = $filesop[1];
-                    $type = $filesop[2];
-                    $semester = $filesop[3];
-                    $department = $filesop[4];
-                    if ($code == "" || $code == "Subject Code") {
-                        continue;
-                    }
-                    $q = mysqli_query(
-                        mysqli_connect("localhost", "root", "", "ttms"),
-                        "INSERT INTO subjects VALUES ('$code','$name','$type','$semester','$department',0,'','','')"
-                    );
-                }
-            }
-        }
+        // if (isset($_POST['subjectexcel'])) {
+        //     if (empty($_FILES['file']['tmp_name'])) {
+        //         echo '<script>alert("Select a file first! ");</script>';
+        //     } else {
+        //         $file = $_FILES['file']['tmp_name'];
+        //         $handle = fopen($file, 'r');
+        //         while (!feof($handle)) {
+        //             $filesop = fgetcsv($handle, 1000);
+        //             $code = $filesop[0];
+        //             $name = $filesop[1];
+        //             $type = $filesop[2];
+        //             $semester = $filesop[3];
+        //             $department = $filesop[4];
+        //             if ($code == "" || $code == "Subject Code") {
+        //                 continue;
+        //             }
+        //             $q = mysqli_query(
+        //                 mysqli_connect("localhost", "root", "", "ttms"),
+        //                 "INSERT INTO subjects VALUES ('$code','$name','$type','$semester','$department',0,'','','')"
+        //             );
+        //         }
+        //     }
+        // }
         ?>
     </div>
     <div align="center" style="margin-top: 20px">
